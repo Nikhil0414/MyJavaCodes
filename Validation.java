@@ -1,0 +1,6 @@
+import java.util.*; 
+import java.util.regex.Matcher; 
+import java.util.regex.Pattern; 
+public class Validation{
+	public static void val(String regNumber,String mobileNumber){ if(regNumber.length()!=9){ System.out.println("Invalid"); throw new IllegalArgumentException("Register number should have exactly 9 characters "); } if(mobileNumber.length()!=10){ System.out.println("Invalid"); throw new IllegalArgumentException("Mobile number should have exactly 10 characters"); } 
+String pattern = "^[1-9]{1}\\d{9}"; Pattern a = Pattern.compile(pattern); Matcher m1 = a.matcher(mobileNumber); if(!m1.find()){ throw new NumberFormatException("Mobile number should only have digits"); } String patt="^[0-9]{2}[A-Z]{3}[0-9]{4}$"; Pattern b=Pattern.compile(patt); Matcher check=b.matcher(regNumber); if(!check.find()){ throw new NoSuchElementException("Invalid Reg number "); } } public static void main(String[] args){ Scanner sc=new Scanner(System.in); String regNumber=sc.next(); String mobileNumber=sc.next(); val(regNumber,mobileNumber); System.out.println("Valid"); } }
